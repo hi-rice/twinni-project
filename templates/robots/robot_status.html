@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robot Status Monitoring</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>Robot Status Monitoring</h2>
+
+    <!-- 로봇 추가 링크 -->
+    <a href="{% url 'robot_add' %}">Add New Robot</a>
+
+    <!-- 유지보수 알림 섹션 -->
+    <h3>Maintenance Alerts</h3>
+    <ul>
+        {% for robot in robots %}
+            {% if robot.maintenance_due %}
+                <li>
+                    <strong>{{ robot.name }} ({{ robot.model_number }})</strong>: Maintenance due! 
+                    - Battery: {{ robot.battery_level }}% 
+                    - Temperature: {{ robot.temperature }}°C
+                    <a href="{% url 'perform_maintenance' robot.id %}">Mark as Maintained</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <!-- 전체 로봇 상태 섹션 -->
+    <h3>All Robots</h3>
+    <ul>
+        {% for robot in robots %}
+            <li>
+                {{ robot.name }} ({{ robot.model_number }}): {{ robot.get_status_display }} 
+                - Battery: {{ robot.battery_level }}% 
+                - Location: {{ robot.location }} 
+                - Temperature: {{ robot.temperature }}°C
+
+                <!-- 로봇 수정 및 삭제 링크 -->
+                <a href="{% url 'robot_edit' robot.id %}">Edit</a>
+                <a href="{% url 'robot_delete' robot.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: relative;
+    transition: transform 1s ease;
+}
+
+.box.move {
+    transform: translateX(200px);
+}
+
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+.light-theme {
+    background-color: #fff;
+    color: #000;
+}

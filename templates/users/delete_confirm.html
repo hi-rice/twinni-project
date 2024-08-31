@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Account</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>Are you sure you want to delete your account?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete my account</button>
+    </form>
+    <p><a href="{% url 'mypage' %}">No, take me back</a></p>
+</body>
+</html>

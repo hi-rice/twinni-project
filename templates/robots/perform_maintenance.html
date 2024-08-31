@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perform Maintenance</title>
+</head>
+<body>
+    <h2>Perform Maintenance for {{ robot.name }}</h2>
+    <p>Last Maintenance: {{ robot.last_maintenance_date }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Mark as Maintained</button>
+    </form>
+    <p><a href="{% url 'robot_status' %}">Back to Robot Status</a></p>
+</body>
+</html>

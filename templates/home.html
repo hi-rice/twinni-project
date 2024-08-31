@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+
+    {% if request.user.is_authenticated %}
+        <p>Hello, {{ request.user.username }}!</p>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <p>You are not logged in. <a href="{% url 'login' %}">Login</a></p>
+    {% endif %}
+</body>
+</html>
